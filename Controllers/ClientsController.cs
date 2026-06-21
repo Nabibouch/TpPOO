@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using tp_a_rendre.Domain;
 using tp_a_rendre.Services;
+using tp_a_rendre.ViewModels;
 
 namespace tp_a_rendre.Controllers;
 
@@ -21,17 +21,24 @@ public class ClientsController : Controller
 
     public IActionResult Create()
     {
-        return View(Client.CreateForForm());
+        return View(new ClientFormViewModel());
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(Client client)
+    public async Task<IActionResult> Create(ClientFormViewModel vm)
     {
         if (!ModelState.IsValid)
-            return View(client);
+            return View(vm);
 
-        await _clientService.CreateAsync(client);
+        var result = await _clientService.CreateAsync(vm.FirstName, vm.LastName, vm.Email, vm.PhoneNumber);
+
+        if (!result.Success)
+        {
+            vm.BusinessError = result.ErrorMessage;
+            return View(vm);
+        }
+
         return RedirectToAction(nameof(Index));
     }
 
@@ -41,20 +48,27 @@ public class ClientsController : Controller
         if (client is null)
             return NotFound();
 
-        return View(client);
+        return View(ClientFormViewModel.FromDomain(client));
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, Client client)
+    public async Task<IActionResult> Edit(int id, ClientFormViewModel vm)
     {
-        if (id != client.Id)
+        if (id != vm.Id)
             return NotFound();
 
         if (!ModelState.IsValid)
-            return View(client);
+            return View(vm);
 
-        await _clientService.UpdateAsync(client);
+        var result = await _clientService.UpdateAsync(id, vm.FirstName, vm.LastName, vm.Email, vm.PhoneNumber);
+
+        if (!result.Success)
+        {
+            vm.BusinessError = result.ErrorMessage;
+            return View(vm);
+        }
+
         return RedirectToAction(nameof(Index));
     }
 

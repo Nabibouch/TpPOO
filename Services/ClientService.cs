@@ -26,17 +26,42 @@ public class ClientService : IClientService
         return await _context.Clients.FindAsync(id);
     }
 
-    public async Task<Client> CreateAsync(Client client)
+    public async Task<ServiceResult<Client>> CreateAsync(string firstName, string lastName, string email, string phoneNumber)
     {
-        _context.Clients.Add(client);
-        await _context.SaveChangesAsync();
-        return client;
+        try
+        {
+            var client = new Client(firstName, lastName, email, phoneNumber);
+            _context.Clients.Add(client);
+            await _context.SaveChangesAsync();
+            return ServiceResult<Client>.Ok(client);
+        }
+        catch (ArgumentException ex)
+        {
+            return ServiceResult<Client>.Fail(ex.Message);
+        }
     }
 
-    public async Task UpdateAsync(Client client)
+    public async Task<ServiceResult<Client>> UpdateAsync(int id, string firstName, string lastName, string email, string phoneNumber)
     {
-        _context.Clients.Update(client);
-        await _context.SaveChangesAsync();
+        var client = await _context.Clients.FindAsync(id);
+        if (client is null)
+        {
+            return ServiceResult<Client>.Fail("Client introuvable.");
+        }
+
+        try
+        {
+            client.FirstName = firstName;
+            client.LastName = lastName;
+            client.Email = email;
+            client.PhoneNumber = phoneNumber;
+            await _context.SaveChangesAsync();
+            return ServiceResult<Client>.Ok(client);
+        }
+        catch (ArgumentException ex)
+        {
+            return ServiceResult<Client>.Fail(ex.Message);
+        }
     }
 
     public async Task DeleteAsync(int id)

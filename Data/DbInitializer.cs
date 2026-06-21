@@ -27,8 +27,8 @@ public static class DbInitializer
         );
 
         context.Clients.AddRange(
-            new Client("Sophie", "Martin", "sophie.martin@mail.fr", 1012345678),
-            new Client("Lucas", "Bernard", "lucas.bernard@mail.fr", 1023456789)
+            new Client("Sophie", "Martin", "sophie.martin@mail.fr", "0612345678"),
+            new Client("Lucas", "Bernard", "lucas.bernard@mail.fr", "0698765432")
         );
 
         context.SaveChanges();

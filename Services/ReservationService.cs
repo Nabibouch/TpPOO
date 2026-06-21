@@ -76,12 +76,17 @@ public class ReservationService : IReservationService
                 "Cette voiture est déjà réservée sur tout ou partie de la période choisie.");
         }
 
-        var reservation = new Reservation(startOn, endOn, car, client);
-
-        _context.Reservations.Add(reservation);
-        await _context.SaveChangesAsync();
-
-        return ServiceResult<Reservation>.Ok(reservation);
+        try
+        {
+            var reservation = new Reservation(startOn, endOn, car, client);
+            _context.Reservations.Add(reservation);
+            await _context.SaveChangesAsync();
+            return ServiceResult<Reservation>.Ok(reservation);
+        }
+        catch (ArgumentException ex)
+        {
+            return ServiceResult<Reservation>.Fail(ex.Message);
+        }
     }
 
     public async Task DeleteAsync(int id)
