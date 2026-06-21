@@ -1,0 +1,46 @@
+@model tp_a_rendre.ViewModels.BrandFormViewModel
+@{
+    ViewData["Title"] = "Nouvelle marque";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card border-0 shadow-sm mt-4">
+            <div class="card-body p-4">
+                <h2 class="h4 fw-bold text-dark mb-4 text-center">Nouvelle Marque</h2>
+
+                <form asp-action="Create" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    @if (!string.IsNullOrEmpty(Model.BusinessError))
+                    {
+                        <div class="alert alert-warning border-0 shadow-sm mb-4">
+                            @Model.BusinessError
+                        </div>
+                    }
+
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label fw-semibold text-secondary"></label>
+                        <input asp-for="Name" class="form-control form-control-lg border-2 shadow-none" placeholder="Ex: Tesla, Toyota, BMW..." />
+                        <span asp-validation-for="Name" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="Origin" class="form-label fw-semibold text-secondary"></label>
+                        <input asp-for="Origin" class="form-control form-control-lg border-2 shadow-none" placeholder="Ex: États-Unis, Japon, Allemagne..." />
+                        <span asp-validation-for="Origin" class="text-danger small"></span>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg shadow-sm">Enregistrer la marque</button>
+                        <a asp-action="Index" class="btn btn-link text-muted">Annuler</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

@@ -18,12 +18,72 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\lmrab\Desktop\Hetic\POO\TpPOO
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/lmrab/Desktop/Hetic/POO/TpPOO/Views/Brands/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmRzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lmrab/Desktop/Hetic/POO/TpPOO/Views/Brands/CreateModel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmRzXENyZWF0ZU1vZGVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lmrab/Desktop/Hetic/POO/TpPOO/Views/Brands/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lmrab/Desktop/Hetic/POO/TpPOO/Views/Cars/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fyc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lmrab/Desktop/Hetic/POO/TpPOO/Views/Cars/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fyc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lmrab/Desktop/Hetic/POO/TpPOO/Views/Cars/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fyc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lmrab/Desktop/Hetic/POO/TpPOO/Views/Cars/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fyc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lmrab/Desktop/Hetic/POO/TpPOO/Views/Cars/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2Fyc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lmrab/Desktop/Hetic/POO/TpPOO/Views/Clients/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50c1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lmrab/Desktop/Hetic/POO/TpPOO/Views/Clients/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50c1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lmrab/Desktop/Hetic/POO/TpPOO/Views/Clients/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50c1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lmrab/Desktop/Hetic/POO/TpPOO/Views/Clients/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/lmrab/Desktop/Hetic/POO/TpPOO/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/lmrab/Desktop/Hetic/POO/TpPOO/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lmrab/Desktop/Hetic/POO/TpPOO/Views/Reservations/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXRpb25zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lmrab/Desktop/Hetic/POO/TpPOO/Views/Reservations/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXRpb25zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lmrab/Desktop/Hetic/POO/TpPOO/Views/Reservations/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzZXJ2YXRpb25zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/lmrab/Desktop/Hetic/POO/TpPOO/Views/Shared/Error.cshtml]

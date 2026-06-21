@@ -1,0 +1,18 @@
+@model tp_a_rendre.Domain.Reservation
+@{
+    ViewData["Title"] = "Supprimer la réservation";
+}
+
+<h1>Supprimer la réservation</h1>
+
+<p>
+    Supprimer la réservation de <strong>@Model.Client.FirstName @Model.Client.LastName</strong>
+    pour la voiture <strong>@Model.Car.Model.Brand.Name @Model.Car.Model.Name</strong>
+    du @Model.StartOn.ToString("dd/MM/yyyy") au @Model.EndOn.ToString("dd/MM/yyyy") ?
+</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Supprimer</button>
+    <a asp-action="Index" class="btn btn-link">Annuler</a>
+</form>
