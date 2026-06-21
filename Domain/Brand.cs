@@ -1,4 +1,4 @@
-using System.Runtime.CompilerServices;
+namespace tp_a_rendre.Domain;
 
 public class Brand
 {

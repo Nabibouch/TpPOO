@@ -21,7 +21,7 @@ public class ClientsController : Controller
 
     public IActionResult Create()
     {
-        return View(new Client());
+        return View(Client.CreateForForm());
     }
 
     [HttpPost]

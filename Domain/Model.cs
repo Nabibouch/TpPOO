@@ -1,3 +1,4 @@
+namespace tp_a_rendre.Domain;
 
 public class Model
 {

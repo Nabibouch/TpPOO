@@ -1,4 +1,4 @@
-using tp_a_rendre.Domain;
+namespace tp_a_rendre.Domain;
 
 public class Car
 {

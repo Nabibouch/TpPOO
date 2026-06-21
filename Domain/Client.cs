@@ -70,6 +70,9 @@ public class Client
     }
 
     private Client() {}
+
+    public static Client CreateForForm() => new Client();
+
     public Client(string firstName, string lastname, string email, int phoneNumber)
     {
         FirstName = firstName;
