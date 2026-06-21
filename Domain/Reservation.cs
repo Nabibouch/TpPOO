@@ -1,4 +1,4 @@
-
+namespace tp_a_rendre.Domain;
 public class Reservation
 {
     public int Id {get; private set;}
