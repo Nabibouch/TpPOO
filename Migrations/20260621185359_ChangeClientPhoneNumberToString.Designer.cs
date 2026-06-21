@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using tp_a_rendre.Data;
 
@@ -10,9 +11,11 @@ using tp_a_rendre.Data;
 namespace tp_a_rendre.Migrations
 {
     [DbContext(typeof(LocaticDbContext))]
-    partial class LocaticDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260621185359_ChangeClientPhoneNumberToString")]
+    partial class ChangeClientPhoneNumberToString
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.26");

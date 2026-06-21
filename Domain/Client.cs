@@ -5,7 +5,7 @@ public class Client
     private string _firstName;
     private string _lastName;
     private string _email;
-    private int _phoneNumber;
+    private string _phoneNumber;
     private readonly List<Reservation> _reservations = new List<Reservation>();
     public IReadOnlyCollection<Reservation> Reservations => _reservations;
     public string FirstName
@@ -53,7 +53,7 @@ public class Client
             _email = value;
         }
     }
-    public int PhoneNumber
+    public string PhoneNumber
     {
         get
         {
@@ -61,9 +61,9 @@ public class Client
         }
         set
         {
-            if(value.ToString().Length != 10)
+            if (string.IsNullOrWhiteSpace(value) || value.Length != 10 || !value.All(char.IsDigit))
             {
-                throw new ArgumentException("Phone number must have 10 digits"); //Pas exactement vrai mais suffit pour l'exercice
+                throw new ArgumentException("Phone number must have 10 digits");
             }
             _phoneNumber = value;
         }
@@ -73,7 +73,7 @@ public class Client
 
     public static Client CreateForForm() => new Client();
 
-    public Client(string firstName, string lastname, string email, int phoneNumber)
+    public Client(string firstName, string lastname, string email, string phoneNumber)
     {
         FirstName = firstName;
         LastName = lastname;
