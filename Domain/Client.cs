@@ -4,6 +4,10 @@ namespace tp_a_rendre.Domain;
 
 public class Client
 {
+    public Client()
+    {
+    }
+
     public int Id { get; set; }
 
     [Required(ErrorMessage = "Le nom est obligatoire.")]
