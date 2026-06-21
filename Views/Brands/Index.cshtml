@@ -1,0 +1,99 @@
+@model tp_a_rendre.ViewModels.BrandModelIndexViewModel
+@{
+    ViewData["Title"] = "Marques & Modèles";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="display-5 fw-bold text-dark">Marques & Modèles</h1>
+        <p class="text-muted mb-0">Gérez le catalogue des marques de voitures et leurs modèles associés.</p>
+    </div>
+    <div class="d-flex gap-2">
+        <a asp-action="Create" class="btn btn-primary shadow-sm d-flex align-items-center gap-2">
+            <span>Nouvelle marque</span>
+        </a>
+        <a asp-action="CreateModel" class="btn btn-outline-primary shadow-sm d-flex align-items-center gap-2">
+            <span>Nouveau modèle</span>
+        </a>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Colonne des Marques -->
+    <div class="col-md-6">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center border-bottom-0">
+                <h5 class="mb-0 fw-bold text-secondary text-uppercase tracking-wider" style="font-size: 0.85rem;">Marques enregistrées</h5>
+                <span class="badge bg-primary rounded-pill">@Model.Brands.Count</span>
+            </div>
+            <div class="card-body p-0">
+                @if (!Model.Brands.Any())
+                {
+                    <div class="p-4 text-center text-muted">
+                        <p class="mb-0">Aucune marque enregistrée pour le moment.</p>
+                    </div>
+                }
+                else
+                {
+                    <div class="list-group list-group-flush">
+                        @foreach (var brand in Model.Brands)
+                        {
+                            <div class="list-group-item py-3 px-4 d-flex justify-content-between align-items-center list-group-item-action border-start border-3 border-transparent hover-border-primary transition">
+                                <div>
+                                    <h6 class="mb-0 fw-bold text-dark">@brand.Name</h6>
+                                    <small class="text-muted">Origine</small>
+                                </div>
+                                <span class="badge bg-light text-dark border px-3 py-2 rounded-pill">@brand.Origin</span>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Colonne des Modèles -->
+    <div class="col-md-6">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center border-bottom-0">
+                <h5 class="mb-0 fw-bold text-secondary text-uppercase tracking-wider" style="font-size: 0.85rem;">Modèles enregistrés</h5>
+                <span class="badge bg-outline-primary border border-primary text-primary rounded-pill">@Model.Models.Count</span>
+            </div>
+            <div class="card-body p-0">
+                @if (!Model.Models.Any())
+                {
+                    <div class="p-4 text-center text-muted">
+                        <p class="mb-0">Aucun modèle enregistré pour le moment.</p>
+                    </div>
+                }
+                else
+                {
+                    <div class="list-group list-group-flush">
+                        @foreach (var m in Model.Models)
+                        {
+                            <div class="list-group-item py-3 px-4 d-flex justify-content-between align-items-center list-group-item-action">
+                                <div>
+                                    <h6 class="mb-0 fw-bold text-dark">@m.Name</h6>
+                                    <small class="text-muted">Modèle de voiture</small>
+                                </div>
+                                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill fw-semibold">
+                                    @m.Brand.Name
+                                </span>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .transition {
+        transition: all 0.2s ease-in-out;
+    }
+    .hover-border-primary:hover {
+        border-left-color: #0d6efd !important;
+        background-color: #f8f9fa;
+    }
+</style>

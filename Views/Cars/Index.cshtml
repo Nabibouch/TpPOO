@@ -1,0 +1,87 @@
+@model IEnumerable<tp_a_rendre.Domain.Car>
+@{
+    ViewData["Title"] = "Voitures";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="display-5 fw-bold text-dark">Parc Automobile</h1>
+        <p class="text-muted mb-0">Consultez, modifiez et gérez l'ensemble des voitures disponibles.</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary shadow-sm d-flex align-items-center gap-2">
+        <span>Nouvelle voiture</span>
+    </a>
+</div>
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-0">
+        @if (!Model.Any())
+        {
+            <div class="p-5 text-center text-muted">
+                <h5 class="mb-2">Aucune voiture disponible</h5>
+                <p class="mb-0">Ajoutez une voiture au parc pour commencer.</p>
+            </div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table table-hover table-borderless align-middle mb-0">
+                    <thead class="bg-light text-secondary uppercase border-bottom" style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em;">
+                        <tr>
+                            <th class="ps-4 py-3">Voiture</th>
+                            <th class="py-3">Immatriculation</th>
+                            <th class="py-3 text-center">Année</th>
+                            <th class="py-3 text-center">Places</th>
+                            <th class="py-3">Carburant</th>
+                            <th class="py-3 text-end">Tarif Journalier</th>
+                            <th class="pe-4 py-3 text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var car in Model)
+                        {
+                            <tr>
+                                <td class="ps-4 py-3">
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-primary bg-opacity-10 text-primary px-3 py-2 rounded me-3 fw-bold">
+                                            @car.Model.Brand.Name[0]
+                                        </div>
+                                        <div>
+                                            <span class="d-block fw-bold text-dark">@car.Model.Brand.Name @car.Model.Name</span>
+                                            <small class="text-muted">@car.Name</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="py-3">
+                                    <span class="badge bg-light text-dark border font-monospace px-3 py-2 rounded">@car.LicensePlate</span>
+                                </td>
+                                <td class="py-3 text-center text-dark fw-medium">@car.Year</td>
+                                <td class="py-3 text-center text-dark fw-medium">@car.SeatingCapacity</td>
+                                <td class="py-3">
+                                    @{
+                                        string bgClass = car.FuelType.ToLower() switch {
+                                            "essence" => "bg-success",
+                                            "diesel" => "bg-warning text-dark",
+                                            "electrique" => "bg-info text-dark",
+                                            "hybride" => "bg-primary",
+                                            _ => "bg-secondary"
+                                        };
+                                    }
+                                    <span class="badge @bgClass px-3 py-2 rounded-pill font-semibold">@car.FuelType</span>
+                                </td>
+                                <td class="py-3 text-end fw-bold text-primary">@car.Price.ToString("C0")</td>
+                                <td class="pe-4 py-3 text-end">
+                                    <div class="btn-group shadow-sm border rounded bg-white">
+                                        <a asp-action="Details" asp-route-id="@car.Id" class="btn btn-sm btn-light text-dark px-3" title="Détails">Consulter</a>
+                                        <a asp-action="Edit" asp-route-id="@car.Id" class="btn btn-sm btn-light text-dark px-3" title="Modifier">Modifier</a>
+                                        <a asp-action="Delete" asp-route-id="@car.Id" class="btn btn-sm btn-light text-danger px-3" title="Supprimer">Supprimer</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

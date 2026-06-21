@@ -9,6 +9,9 @@ builder.Services.AddDbContext<LocaticDbContext>(options =>
 
 builder.Services.AddScoped<IClientService, ClientService>();
 builder.Services.AddScoped<IReservationService, ReservationService>();
+builder.Services.AddScoped<IBrandService, BrandService>();
+builder.Services.AddScoped<IModelService, ModelService>();
+builder.Services.AddScoped<ICarService, CarService>();
 
 builder.Services.AddControllersWithViews();
 
