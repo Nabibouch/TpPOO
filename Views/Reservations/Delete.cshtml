@@ -6,9 +6,9 @@
 <h1>Supprimer la réservation</h1>
 
 <p>
-    Supprimer la réservation de <strong>@Model.Client.Prenom @Model.Client.Nom</strong>
-    pour la voiture <strong>@Model.Voiture.Modele.Marque.Nom @Model.Voiture.Modele.Nom</strong>
-    du @Model.DateDebut.ToString("dd/MM/yyyy") au @Model.DateFin.ToString("dd/MM/yyyy") ?
+    Supprimer la réservation de <strong>@Model.Client.FirstName @Model.Client.LastName</strong>
+    pour la voiture <strong>@Model.Car.Model.Brand.Name @Model.Car.Model.Name</strong>
+    du @Model.StartOn.ToString("dd/MM/yyyy") au @Model.EndOn.ToString("dd/MM/yyyy") ?
 </p>
 
 <form asp-action="Delete" method="post">

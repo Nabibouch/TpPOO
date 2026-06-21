@@ -28,7 +28,7 @@ public class ReservationsController : Controller
     public async Task<IActionResult> Create()
     {
         var vm = new ReservationFormViewModel();
-        await RemplirListesAsync(vm);
+        await FillListsAsync(vm);
         return View(vm);
     }
 
@@ -38,24 +38,20 @@ public class ReservationsController : Controller
     {
         if (!ModelState.IsValid)
         {
-            await RemplirListesAsync(vm);
+            await FillListsAsync(vm);
             return View(vm);
         }
 
-        var reservation = new Reservation
-        {
-            ClientId = vm.ClientId,
-            VoitureId = vm.VoitureId,
-            DateDebut = vm.DateDebut,
-            DateFin = vm.DateFin
-        };
-
-        var result = await _reservationService.CreateAsync(reservation);
+        var result = await _reservationService.CreateAsync(
+            vm.ClientId,
+            vm.CarId,
+            vm.StartOn,
+            vm.EndOn);
 
         if (!result.Success)
         {
             vm.BusinessError = result.ErrorMessage;
-            await RemplirListesAsync(vm);
+            await FillListsAsync(vm);
             return View(vm);
         }
 
@@ -79,20 +75,20 @@ public class ReservationsController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    private async Task RemplirListesAsync(ReservationFormViewModel vm)
+    private async Task FillListsAsync(ReservationFormViewModel vm)
     {
         var clients = await _clientService.GetAllAsync();
         vm.Clients = clients.Select(c => new SelectListItem
         {
             Value = c.Id.ToString(),
-            Text = $"{c.Prenom} {c.Nom}"
+            Text = $"{c.FirstName} {c.LastName}"
         });
 
-        var voitures = await _reservationService.GetVoituresAsync();
-        vm.Voitures = voitures.Select(v => new SelectListItem
+        var cars = await _reservationService.GetCarsAsync();
+        vm.Cars = cars.Select(c => new SelectListItem
         {
-            Value = v.Id.ToString(),
-            Text = $"{v.Modele.Marque.Nom} {v.Modele.Nom} ({v.Immatriculation})"
+            Value = c.Id.ToString(),
+            Text = $"{c.Model.Brand.Name} {c.Model.Name} ({c.LicensePlate})"
         });
     }
 }

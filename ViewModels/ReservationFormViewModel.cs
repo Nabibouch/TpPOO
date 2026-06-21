@@ -13,20 +13,20 @@ public class ReservationFormViewModel
 
     [Required(ErrorMessage = "Veuillez sélectionner une voiture.")]
     [Display(Name = "Voiture")]
-    public int VoitureId { get; set; }
+    public int CarId { get; set; }
 
     [Required(ErrorMessage = "La date de début est obligatoire.")]
     [Display(Name = "Date de début")]
     [DataType(DataType.Date)]
-    public DateTime DateDebut { get; set; } = DateTime.Today;
+    public DateTime StartOn { get; set; } = DateTime.Today;
 
     [Required(ErrorMessage = "La date de fin est obligatoire.")]
     [Display(Name = "Date de fin")]
     [DataType(DataType.Date)]
-    public DateTime DateFin { get; set; } = DateTime.Today.AddDays(1);
+    public DateTime EndOn { get; set; } = DateTime.Today.AddDays(1);
 
     public IEnumerable<SelectListItem> Clients { get; set; } = [];
-    public IEnumerable<SelectListItem> Voitures { get; set; } = [];
+    public IEnumerable<SelectListItem> Cars { get; set; } = [];
 
     public string? BusinessError { get; set; }
 }

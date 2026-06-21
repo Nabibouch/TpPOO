@@ -28,10 +28,10 @@ else
             @foreach (var resa in Model)
             {
                 <tr>
-                    <td>@resa.Client.Prenom @resa.Client.Nom</td>
-                    <td>@resa.Voiture.Modele.Marque.Nom @resa.Voiture.Modele.Nom (@resa.Voiture.Immatriculation)</td>
-                    <td>@resa.DateDebut.ToString("dd/MM/yyyy")</td>
-                    <td>@resa.DateFin.ToString("dd/MM/yyyy")</td>
+                    <td>@resa.Client.FirstName @resa.Client.LastName</td>
+                    <td>@resa.Car.Model.Brand.Name @resa.Car.Model.Name (@resa.Car.LicensePlate)</td>
+                    <td>@resa.StartOn.ToString("dd/MM/yyyy")</td>
+                    <td>@resa.EndOn.ToString("dd/MM/yyyy")</td>
                     <td class="text-end">
                         <a asp-action="Delete" asp-route-id="@resa.Id" class="btn btn-sm btn-outline-danger">Supprimer</a>
                     </td>

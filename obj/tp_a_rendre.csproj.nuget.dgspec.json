@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lenovo\\Desktop\\Mes projets\\TpPOO\\tp_a_rendre.csproj": {}
+    "C:\\Users\\lmrab\\Desktop\\Hetic\\POO\\TpPOO\\tp_a_rendre.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lenovo\\Desktop\\Mes projets\\TpPOO\\tp_a_rendre.csproj": {
+    "C:\\Users\\lmrab\\Desktop\\Hetic\\POO\\TpPOO\\tp_a_rendre.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo\\Desktop\\Mes projets\\TpPOO\\tp_a_rendre.csproj",
+        "projectUniqueName": "C:\\Users\\lmrab\\Desktop\\Hetic\\POO\\TpPOO\\tp_a_rendre.csproj",
         "projectName": "tp_a_rendre",
-        "projectPath": "C:\\Users\\Lenovo\\Desktop\\Mes projets\\TpPOO\\tp_a_rendre.csproj",
-        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo\\Desktop\\Mes projets\\TpPOO\\obj\\",
+        "projectPath": "C:\\Users\\lmrab\\Desktop\\Hetic\\POO\\TpPOO\\tp_a_rendre.csproj",
+        "packagesPath": "C:\\Users\\lmrab\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lmrab\\Desktop\\Hetic\\POO\\TpPOO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\lmrab\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"

@@ -17,10 +17,10 @@ public class ReservationService : IReservationService
     {
         return await _context.Reservations
             .Include(r => r.Client)
-            .Include(r => r.Voiture)
-                .ThenInclude(v => v.Modele)
-                    .ThenInclude(m => m.Marque)
-            .OrderByDescending(r => r.DateDebut)
+            .Include(r => r.Car)
+                .ThenInclude(c => c.Model)
+                    .ThenInclude(m => m.Brand)
+            .OrderByDescending(r => r.StartOn)
             .ToListAsync();
     }
 
@@ -28,41 +28,55 @@ public class ReservationService : IReservationService
     {
         return await _context.Reservations
             .Include(r => r.Client)
-            .Include(r => r.Voiture)
-                .ThenInclude(v => v.Modele)
-                    .ThenInclude(m => m.Marque)
+            .Include(r => r.Car)
+                .ThenInclude(c => c.Model)
+                    .ThenInclude(m => m.Brand)
             .FirstOrDefaultAsync(r => r.Id == id);
     }
 
-    public async Task<IReadOnlyList<Voiture>> GetVoituresAsync()
+    public async Task<IReadOnlyList<Car>> GetCarsAsync()
     {
-        return await _context.Voitures
-            .Include(v => v.Modele)
-                .ThenInclude(m => m.Marque)
-            .OrderBy(v => v.Modele.Marque.Nom)
-            .ThenBy(v => v.Modele.Nom)
-            .ThenBy(v => v.Immatriculation)
+        return await _context.Cars
+            .Include(c => c.Model)
+                .ThenInclude(m => m.Brand)
+            .OrderBy(c => c.Model.Brand.Name)
+            .ThenBy(c => c.Model.Name)
+            .ThenBy(c => c.LicensePlate)
             .ToListAsync();
     }
 
-    public async Task<ServiceResult<Reservation>> CreateAsync(Reservation reservation)
+    public async Task<ServiceResult<Reservation>> CreateAsync(int clientId, int carId, DateTime startOn, DateTime endOn)
     {
-        if (reservation.DateFin < reservation.DateDebut)
+        var client = await _context.Clients.FindAsync(clientId);
+        if (client is null)
+        {
+            return ServiceResult<Reservation>.Fail("Client introuvable.");
+        }
+
+        var car = await _context.Cars.FindAsync(carId);
+        if (car is null)
+        {
+            return ServiceResult<Reservation>.Fail("Voiture introuvable.");
+        }
+
+        if (endOn < startOn)
         {
             return ServiceResult<Reservation>.Fail(
                 "La date de fin doit être postérieure ou égale à la date de début.");
         }
 
         var chevauchement = await _context.Reservations.AnyAsync(r =>
-            r.VoitureId == reservation.VoitureId &&
-            reservation.DateDebut <= r.DateFin &&
-            reservation.DateFin >= r.DateDebut);
+            r.CarId == carId &&
+            startOn <= r.EndOn &&
+            endOn >= r.StartOn);
 
         if (chevauchement)
         {
             return ServiceResult<Reservation>.Fail(
                 "Cette voiture est déjà réservée sur tout ou partie de la période choisie.");
         }
+
+        var reservation = new Reservation(startOn, endOn, car, client);
 
         _context.Reservations.Add(reservation);
         await _context.SaveChangesAsync();

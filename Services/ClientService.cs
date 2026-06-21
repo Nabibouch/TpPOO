@@ -16,8 +16,8 @@ public class ClientService : IClientService
     public async Task<IReadOnlyList<Client>> GetAllAsync()
     {
         return await _context.Clients
-            .OrderBy(c => c.Nom)
-            .ThenBy(c => c.Prenom)
+            .OrderBy(c => c.LastName)
+            .ThenBy(c => c.FirstName)
             .ToListAsync();
     }
 
