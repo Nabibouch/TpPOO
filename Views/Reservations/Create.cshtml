@@ -1,0 +1,50 @@
+@model tp_a_rendre.ViewModels.ReservationFormViewModel
+@{
+    ViewData["Title"] = "Nouvelle réservation";
+}
+
+<h1>Nouvelle réservation</h1>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+    @if (!string.IsNullOrEmpty(Model.BusinessError))
+    {
+        <div class="alert alert-warning">@Model.BusinessError</div>
+    }
+
+    <div class="mb-3">
+        <label asp-for="ClientId" class="form-label"></label>
+        <select asp-for="ClientId" asp-items="Model.Clients" class="form-select">
+            <option value="">-- Choisir un client --</option>
+        </select>
+        <span asp-validation-for="ClientId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="VoitureId" class="form-label"></label>
+        <select asp-for="VoitureId" asp-items="Model.Voitures" class="form-select">
+            <option value="">-- Choisir une voiture --</option>
+        </select>
+        <span asp-validation-for="VoitureId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DateDebut" class="form-label"></label>
+        <input asp-for="DateDebut" class="form-control" />
+        <span asp-validation-for="DateDebut" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DateFin" class="form-label"></label>
+        <input asp-for="DateFin" class="form-control" />
+        <span asp-validation-for="DateFin" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Créer la réservation</button>
+    <a asp-action="Index" class="btn btn-link">Annuler</a>
+</form>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
